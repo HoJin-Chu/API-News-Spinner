@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import News from '../views/News'
 import Ask from '../views/Ask'
 import Jobs from '../views/Jobs'
+import User from '../views/User'
+import Item from '../views/Item'
 
 Vue.use(VueRouter);
 
@@ -24,6 +26,14 @@ export const router = new VueRouter({
         {
             path: '/jobs',
             component: Jobs,
+        },
+        {
+            path: '/user',
+            component: User
+        },
+        {
+            path: '/item',
+            component: Item
         }
     ]
 })
