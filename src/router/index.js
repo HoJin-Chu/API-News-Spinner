@@ -7,9 +7,21 @@ import User from '../views/User'
 import Item from '../views/Item'
 import bus from '../utils/bus'
 import { store } from '../store/index'
-//import CreateListView from '../views/CreateListView'
 
 Vue.use(VueRouter);
+
+const SpinnerLoading = (to,from,next) => {
+    bus.$emit('start:spinner')
+    
+    store.dispatch('FETCH_LIST', to.name)
+        .then(() => {
+            next()
+        })
+        .catch((error)=>{
+            // eslint-disable-next-line no-console
+            console.log(error)
+        })
+    }
 
 export const router = new VueRouter({
     mode: 'history',
@@ -22,52 +34,19 @@ export const router = new VueRouter({
             path: '/news',
             name: 'news',
             component: News,
-            beforeEnter:(to,from,next) => {
-                bus.$emit('start:spinner')
-
-                store.dispatch('FETCH_LIST', to.name)
-                    .then(() => {
-                        next()
-                    })
-                    .catch((error)=>{
-                        // eslint-disable-next-line no-console
-                        console.log(error)
-                    })
-            }
+            beforeEnter:SpinnerLoading
         },
         {
             path: '/ask',
             name: 'ask',
             component: Ask,
-            beforeEnter:(to,from,next) => {
-                bus.$emit('start:spinner')
-
-                store.dispatch('FETCH_LIST', to.name)
-                    .then(() => {
-                        next()
-                    })
-                    .catch((error)=>{
-                        // eslint-disable-next-line no-console
-                        console.log(error)
-                    })
-            }
+            beforeEnter:SpinnerLoading
         },
         {
             path: '/jobs',
             name: 'jobs',
             component: Jobs,
-            beforeEnter:(to,from,next) => {
-                bus.$emit('start:spinner')
-
-                store.dispatch('FETCH_LIST', to.name)
-                    .then(() => {
-                        next()
-                    })
-                    .catch((error)=>{
-                        // eslint-disable-next-line no-console
-                        console.log(error)
-                    })
-            }
+            beforeEnter:SpinnerLoading
         },
         {
             path: '/user/:id',

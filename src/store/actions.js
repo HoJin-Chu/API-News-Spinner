@@ -5,7 +5,7 @@ export default {
         return fetchList(pageName)
             .then(response => {
                 context.commit('SET_LIST', response.data)
-                return response
+                return response;
             })
             .catch(error => {
                 // eslint-disable-next-line no-console
@@ -16,7 +16,7 @@ export default {
         return fetchUserInfo(userName)
             .then( response => {
                 context.commit('SET_USER', response.data)
-                return response
+                return response;
             })
             .catch( error => {
                 // eslint-disable-next-line no-console
@@ -27,7 +27,7 @@ export default {
         return fetchCommentItem(itemId)
             .then( response => {
                 context.commit('SET_ITEM', response.data)
-                return response
+                return response;
             })
             .catch( error => {
                 // eslint-disable-next-line no-console
