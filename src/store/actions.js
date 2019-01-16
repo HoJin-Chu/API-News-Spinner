@@ -2,9 +2,10 @@ import { fetchUserInfo, fetchCommentItem, fetchList } from '../api/index'
 
 export default {
     FETCH_LIST(context,pageName){
-        fetchList(pageName)
+        return fetchList(pageName)
             .then(response => {
                 context.commit('SET_LIST', response.data)
+                return response
             })
             .catch(error => {
                 // eslint-disable-next-line no-console
@@ -12,9 +13,10 @@ export default {
             })
     },
     FETCH_USER(context, userName){
-        fetchUserInfo(userName)
+        return fetchUserInfo(userName)
             .then( response => {
                 context.commit('SET_USER', response.data)
+                return response
             })
             .catch( error => {
                 // eslint-disable-next-line no-console
@@ -22,9 +24,10 @@ export default {
             })
     },
     FETCH_ITEM(context, itemId){
-        fetchCommentItem(itemId)
+        return fetchCommentItem(itemId)
             .then( response => {
                 context.commit('SET_ITEM', response.data)
+                return response
             })
             .catch( error => {
                 // eslint-disable-next-line no-console
