@@ -24,6 +24,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    a{
+        color:rgb(176, 194, 16);
+        text-decoration: none;
+        font-weight: 900;
+    }
 </style>
