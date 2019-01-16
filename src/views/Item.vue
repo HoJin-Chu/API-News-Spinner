@@ -1,7 +1,24 @@
 <template>
     <div>
-        <p>title : {{ fetchedItem.title }}</p>
-        <div>content : {{ fetchedItem.content }}</div>
+        <section>
+            <div>
+                <div>
+                    User
+                </div>
+                <div>
+                    <router-link :to="`/user/${fetchedItem.user}`">
+                        {{ fetchedItem.user }}
+                    </router-link>
+                    <div>
+                        {{ fetchedItem.time_ago }}
+                    </div>
+                </div>
+                <h2>{{ fetchedItem.title }}</h2>
+            </div>
+        </section>
+        <section>
+            <!-- 질문 댓글 -->
+        </section>
     </div>
 </template>
 

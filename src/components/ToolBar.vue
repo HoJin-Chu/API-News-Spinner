@@ -1,8 +1,8 @@
 <template>
     <div class="header">
-        <router-link to="/news">News</router-link> | 
-        <router-link to="/ask">Ask</router-link> | 
-        <router-link to="/jobs">Jobs</router-link>
+        <router-link to="/news">뉴스</router-link>&nbsp; 
+        <router-link to="/ask">질문</router-link>&nbsp; 
+        <router-link to="/jobs">일거리</router-link>
     </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
 <style scoped>
     .header{
         color:white;
-        background-color: #42b883;
+        background-color: rgb(39, 95, 128);
         display: flex;
         padding:8px;
     }
@@ -26,5 +26,6 @@ export default {
 
     .header a{
         color: white;
+        text-decoration-line: none;
     }
 </style>
