@@ -1,32 +1,32 @@
 <template>
     <div>
         <section>
-            <div class="user-container">
-                <div>
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="user-description">
-                    <router-link :to="`/user/${fetchedItem.user}`">
-                        {{ fetchedItem.user }}
-                    </router-link>
-                    <div class="time">
-                        {{ fetchedItem.time_ago }}
-                    </div>
-                </div>
-            </div>
-            <h2>{{ fetchedItem.title }}</h2>
+            <UserProfile>
+                <router-link slot="userName" :to="`/user/${fetchedItem.user}`">
+                    {{ fetchedItem.user }}
+                </router-link>
+                <template slot="time"> {{ fetchedItem.time_ago }} </template>
+            </UserProfile>
         </section>
+
+        <h2>{{ fetchedItem.title }}</h2>
+
         <section>
             <!-- 질문 댓글 -->
             <div v-html="fetchedItem.content"></div>
         </section>
+
     </div>
 </template>
 
 <script>
+import UserProfile from '../components/UserProfile'
 import { mapGetters } from 'vuex'
 
 export default {
+    components:{
+        UserProfile
+    },
     computed:{
         ...mapGetters([
             'fetchedItem'
@@ -35,23 +35,10 @@ export default {
     created(){
         const itemId = this.$route.params.id
         this.$store.dispatch('FETCH_ITEM', itemId)
-    }
+    },
 }
 </script>
 
 <style scoped>
-    .user-container{
-        display: flex;
-        align-items: center;
-        padding:1rem;
-    }
-    .fa-user{
-        font-size:3rem;
-    }
-    .user-description{
-        padding-left:10px;
-    }
-    .time{
-        font-size:0.7rem;
-    }
+
 </style>

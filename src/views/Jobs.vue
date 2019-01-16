@@ -1,20 +1,15 @@
 <template>
     <div>
-        <p v-for="item in fetchedJobs" :key="item.title">
-            <a v-bind:href="item.url">{{ item.title }}</a>
-            <small>{{ item.time_ago}} by {{ item.domain }}</small>
-        </p>
+        <ListItem></ListItem>
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import ListItem from '../components/ListItem'
 
 export default {
-    computed:{
-      ...mapGetters([
-          'fetchedJobs'
-      ])  
+    components:{
+        ListItem
     },
     created(){
         this.$store.dispatch('FETCH_JOBS')
@@ -22,6 +17,7 @@ export default {
 }
 </script>
 
-<style>
 
+<style scoped>
+ 
 </style>

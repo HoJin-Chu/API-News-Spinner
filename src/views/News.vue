@@ -1,23 +1,15 @@
 <template>
     <div>
-        <p v-for="item in fetchedNews" :key="item.title">
-            <a v-bind:href="item.url">{{ item.title }}</a>
-            <small>
-                {{ item.time_ago}} by 
-                <router-link :to="`/user/${item.user}`">{{ item.user }}</router-link>
-            </small>
-        </p>
+        <ListItem></ListItem>
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import ListItem from '../components/ListItem'
 
 export default {
-    computed:{
-      ...mapGetters([
-          'fetchedNews'
-      ])  
+    components:{
+        ListItem
     },
     created(){
         this.$store.dispatch('FETCH_NEWS')
