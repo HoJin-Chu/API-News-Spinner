@@ -13,6 +13,9 @@ export default {
     },
     fetchedItem(state){
         return state.item
+    },
+    fetchedList(state){
+        return state.list
     }
 }
 

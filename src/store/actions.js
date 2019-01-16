@@ -1,4 +1,4 @@
-import { fetchNewsList,fetchAskList,fetchJobsList, fetchUserInfo, fetchCommentItem } from '../api/index'
+import { fetchNewsList,fetchAskList,fetchJobsList, fetchUserInfo, fetchCommentItem, fetchList } from '../api/index'
 
 export default {
     FETCH_NEWS(context){
@@ -6,6 +6,7 @@ export default {
             .then( response => {
                 // 액션에서 state에대해서 값을 못넣어주므로 mutation에서 값을 처리하도록 넘긴다 
                 context.commit('SET_NEWS',response.data)
+                return response
             })
             .catch( error => {
                 // eslint-disable-next-line no-console
@@ -48,6 +49,16 @@ export default {
                 context.commit('SET_ITEM', response.data)
             })
             .catch( error => {
+                // eslint-disable-next-line no-console
+                console.log(error)
+            })
+    },
+    FETCH_LIST(context,pageName){
+        fetchList(pageName)
+            .then(response => {
+                context.commit('SET_LIST', response.data)
+            })
+            .catch(error => {
                 // eslint-disable-next-line no-console
                 console.log(error)
             })
